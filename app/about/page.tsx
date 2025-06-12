@@ -3,27 +3,25 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Users, Award, Leaf, Bug, Shield, X } from "lucide-react"
-
+import { Badge } from "@/components/ui/badge"
 export default function AboutPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-[url('/placeholder.svg?height=600&width=1200')] bg-cover bg-center relative">
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-[url('https://img.freepik.com/premium-vector/cockroach-insect-seamless-pattern-background-pest-bug-top-view-flat-body-parasite-pollution-roaches-vector-illustration_342166-196.jpg?ga=GA1.1.853414003.1745658878&semt=ais_hybrid&w=740')] bg-cover bg-center relative">
         <div className="absolute inset-0 bg-black/60"></div>
         <div className="container px-4 md:px-6 relative z-10">
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
             <div className="space-y-4">
+                            <Badge className="mb-2 bg-yellow-400 text-black hover:bg-yellow-500">100% EFFECTIVE</Badge>
+
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
-                About CockroachKiller
+                About  <span className="text-primary blink-text">King Killers</span>
               </h1>
               <p className="text-white/80 md:text-xl">
                 We're on a mission to help families and businesses eliminate pest problems with safe, effective, and
                 affordable solutions.
               </p>
-            </div>
-            <div className="relative h-[300px] sm:h-[400px] rounded-xl overflow-hidden">
-              <Image src="/placeholder.svg?height=400&width=600" alt="Our Team" fill className="object-cover" />
-              {/* Image description: Professional team of pest control experts in branded uniforms */}
             </div>
           </div>
         </div>
@@ -34,7 +32,7 @@ export default function AboutPage() {
         <div className="container px-4 md:px-6">
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
             <div className="order-2 lg:order-1 relative h-[300px] sm:h-[400px] rounded-xl overflow-hidden">
-              <Image src="/placeholder.svg?height=400&width=600" alt="Our Story" fill className="object-cover" />
+              <Image src="/cocrogeproduct.jfif" alt="Our Story" fill className="object-cover" />
               {/* Image description: Scientist in lab working on cockroach killer formula */}
             </div>
             <div className="order-1 lg:order-2 space-y-4">
@@ -153,7 +151,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Team */}
-      <section className="w-full py-12 md:py-24 bg-background">
+      {/* <section className="w-full py-12 md:py-24 bg-background">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
@@ -198,10 +196,10 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
-      <section className="w-full py-12 md:py-24 bg-primary text-primary-foreground">
+      <section className="w-full py-12 md:py-24 bg-primary text-primary-foreground">  
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
@@ -216,11 +214,7 @@ export default function AboutPage() {
                   Shop Now
                 </Button>
               </Link>
-              <Link href="/contact">
-                <Button size="lg" variant="outline" className="w-full sm:w-auto border-primary-foreground">
-                  Contact Us
-                </Button>
-              </Link>
+             
             </div>
           </div>
         </div>

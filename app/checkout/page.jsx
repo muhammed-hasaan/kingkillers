@@ -671,7 +671,6 @@
 //   )
 // }
 
-
 "use client"
 
 import { useState } from "react"
@@ -698,7 +697,7 @@ import {
   AlertCircle,
 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
-import { submitOrderToGoogleSheet } from "@/app/actions/order-actions"
+import { submitOrderToGoogleSheet } from "../actions/order-actions"
 
 export default function CheckoutPage() {
   const [step, setStep] = useState("shipping")
@@ -817,56 +816,54 @@ export default function CheckoutPage() {
       setStep("payment")
     }
   }
+const [Quantity , setQuantity] = useState("")
+const handleSubmit = async (e) => {
+  e.preventDefault();
+localStorage.setItem("Quantity" , Quantity)
+  if (validateReview()) {
+    const orderData = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      phone: formData.phone,
+      address: formData.address,
+      city: formData.city,
+      pincode: formData.pincode,
+      paymentMethod: formData.paymentMethod,
+      quantity: Quantity
+    };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+    try {
+      const result = await submitOrderToGoogleSheet(orderData);
 
-    if (validateReview()) {
-      // Prepare order data object
-      const orderData = {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        phone: formData.phone,
-        address: formData.address,
-        city: formData.city,
-        pincode: formData.pincode,
-        paymentMethod: formData.paymentMethod,
-        quantity: "1"
-      }
-
-      try {
-        // Submit order to Google Sheet
-        const result = await submitOrderToGoogleSheet(orderData)
-
-        if (result.success) {
-          toast({
-            title: "Order Placed Successfully!",
-            description: `Your order #${result.orderId} has been placed.`,
-            variant: "default",
-          })
-          
-          // Redirect to confirmation page
-          setTimeout(() => {
-            window.location.href = `/checkout/confirmation?orderId=${result.orderId}`
-          }, 2000)
-        } else {
-          toast({
-            title: "Order Failed",
-            description: result.message,
-            variant: "destructive",
-          })
-        }
-      } catch (error) {
-        console.error("Submission error:", error)
+      if (result.success) {
         toast({
-          title: "Error",
-          description: "An unexpected error occurred. Please try again.",
+          title: "Order Placed Successfully!",
+          description: `Your order #${result.orderId} has been placed.`,
+          variant: "default",
+        });
+
+        setTimeout(() => {
+          window.location.href = `/checkout/confirmation?orderId=${result.orderId}`;
+        }, 2000);
+      } else {
+        toast({
+          title: "Order Failed",
+          description: result.message,
           variant: "destructive",
-        })
+        });
       }
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred. Please try again.",
+        variant: "destructive",
+      });
     }
   }
+};
+
 
   return (
     <div className="min-h-screen bg-muted/30 py-12 w-full">
@@ -896,9 +893,9 @@ export default function CheckoutPage() {
                   <TabsTrigger
                     value="shipping"
                     onClick={() => step !== "shipping" && validateShipping() && setStep("shipping")}
-                    className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                    className="data-[state=active]:bg-primary data-[state=active]:text-white"
                   >
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 data-[state=active]:text-white">
                       <MapPin className="h-4 w-4" />
                       <span className="hidden sm:inline">Shipping</span>
                     </div>
@@ -910,9 +907,9 @@ export default function CheckoutPage() {
                         setStep("payment")
                       }
                     }}
-                    className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                    className="data-[state=active]:bg-primary data-[state=active]:text-white"
                   >
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 data-[state=active]:text-white">
                       <CreditCard className="h-4 w-4" />
                       <span className="hidden sm:inline">Payment</span>
                     </div>
@@ -924,9 +921,9 @@ export default function CheckoutPage() {
                         setStep("review")
                       }
                     }}
-                    className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                    className="data-[state=active]:bg-primary data-[state=active]:text-white"
                   >
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 data-[state=active]:text-white">
                       <CheckCircle2 className="h-4 w-4" />
                       <span className="hidden sm:inline">Review</span>
                     </div>
@@ -1035,6 +1032,20 @@ export default function CheckoutPage() {
 
                       
                     </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="city">
+                          Quantity <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="Quantity"
+                          name="Quantity"
+                          value={Quantity}
+                          onChange={(e)=>{setQuantity(e.target.value)}}
+                          type="number"
+                          placeholder="Enter your Quantity"
+                        />
+                        {errors.city && <p className="text-destructive text-sm">{errors.city}</p>}
+                      </div>
 
                     <div className="flex items-center space-x-2">
                       <Checkbox
@@ -1230,13 +1241,10 @@ export default function CheckoutPage() {
                           className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                         >
                           I agree to the{" "}
-                          <Link href="/terms" className="text-primary underline">
-                            Terms and Conditions
-                          </Link>{" "}
-                          and{" "}
-                          <Link href="/privacy" className="text-primary underline">
-                            Privacy Policy
-                          </Link>
+                          <a className="text-primary ">
+                            By Placing
+                          </a>{" "}
+                         this order
                         </label>
                       </div>
                       {errors.agreeTerms && <p className="text-destructive text-sm">{errors.agreeTerms}</p>}
@@ -1269,7 +1277,7 @@ export default function CheckoutPage() {
                 <div className="flex items-center gap-4">
                   <div className="relative h-20 w-20 rounded-md overflow-hidden border">
                     <Image
-                      src="/placeholder.svg?height=80&width=80"
+                      src="/cocrogeproduct.jfif"
                       alt="CockroachKiller Pro Formula"
                       fill
                       className="object-cover"
@@ -1279,7 +1287,7 @@ export default function CheckoutPage() {
                     <h3 className="font-medium">CockroachKiller Pro Formula</h3>
                     <p className="text-sm text-muted-foreground">Quantity: 1</p>
                   </div>
-                  <div className="font-medium">₹499.00</div>
+                  <div className="font-medium">Rs499.00</div>
                 </div>
 
                 <Separator />
@@ -1287,15 +1295,15 @@ export default function CheckoutPage() {
                 <div className="space-y-2">
                   <div className="flex justify-between">
                     <span>Subtotal</span>
-                    <span>₹499.00</span>
+                    <span>Rs499.00</span>
                   </div>
-                  <div className="flex justify-between">
+                  {/* <div className="flex justify-between">
                     <span>Shipping</span>
                     <span>₹50.00</span>
-                  </div>
+                  </div> */}
                   <div className="flex justify-between">
                     <span>Tax</span>
-                    <span>₹0.00</span>
+                    <span>Rs0.00</span>
                   </div>
                 </div>
 
@@ -1303,11 +1311,11 @@ export default function CheckoutPage() {
 
                 <div className="flex justify-between font-bold text-lg">
                   <span>Total</span>
-                  <span>₹549.00</span>
+                  <span>Rs499.00</span>
                 </div>
               </div>
 
-              <div className="space-y-4">
+              {/* <div className="space-y-4">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Truck className="h-4 w-4" />
                   <span>Free shipping on orders over ₹999</span>
@@ -1320,19 +1328,9 @@ export default function CheckoutPage() {
                   <ShieldCheck className="h-4 w-4" />
                   <span>Secure Checkout</span>
                 </div>
-              </div>
+              </div> */}
 
-              <div className="bg-amber-50 border border-amber-200 rounded-md p-4">
-                <div className="flex gap-2">
-                  <AlertCircle className="h-5 w-5 text-amber-500 flex-shrink-0" />
-                  <div>
-                    <p className="text-sm font-medium text-amber-800">Limited Time Offer</p>
-                    <p className="text-xs text-amber-700">
-                      Buy 2 bottles and get 1 free! Add more to your cart before checkout.
-                    </p>
-                  </div>
-                </div>
-              </div>
+            
             </CardContent>
           </Card>
         </div>

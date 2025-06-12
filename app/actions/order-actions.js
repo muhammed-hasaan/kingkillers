@@ -80,18 +80,19 @@
 // }
 
 
-"use server"
+"use server";
 
-import { GoogleSpreadsheet } from "google-spreadsheet"
-import { JWT } from "google-auth-library"
+import { GoogleSpreadsheet } from "google-spreadsheet";
+import { JWT } from "google-auth-library";
 
-const GOOGLE_SHEETS_CLIENT_EMAIL = process.env.GOOGLE_SHEETS_CLIENT_EMAIL || ""
-const GOOGLE_SHEETS_PRIVATE_KEY = process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, "\n") || ""
-const GOOGLE_SHEETS_SHEET_ID = process.env.GOOGLE_SHEETS_SHEET_ID || ""
+const GOOGLE_SHEETS_CLIENT_EMAIL = process.env.GOOGLE_SHEETS_CLIENT_EMAIL || "";
+const GOOGLE_SHEETS_PRIVATE_KEY = process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, "\n") || "";
+const GOOGLE_SHEETS_SHEET_ID = process.env.GOOGLE_SHEETS_SHEET_ID || "";
 
-export async function submitOrderToGoogleSheet(orderData:any) {
+export async function submitOrderToGoogleSheet(orderData) {
   try {
-    // Extract order data from form
+    console.log("Starting order submission to Google Sheet");
+
     const {
       firstName,
       lastName,
@@ -102,34 +103,31 @@ export async function submitOrderToGoogleSheet(orderData:any) {
       pincode,
       paymentMethod,
       quantity = "1"
-    } = orderData
+    } = orderData;
 
-    // Calculate order total
-    const productPrice = 499
-    const quantityNum = Number.parseInt(quantity)
-    const subtotal = productPrice * quantityNum
-    const shipping = subtotal >= 2000 ? 0 : 50
-    const total = subtotal + shipping
+    const productPrice = 499;
+    const quantityNum = Number.parseInt(quantity);
+    const subtotal = productPrice * quantityNum;
+    const shipping = subtotal >= 2000 ? 0 : 50;
+    const total = subtotal + shipping;
 
-    // Create order details
-    const orderId = "ORD-" + Math.floor(100000 + Math.random() * 900000)
+    const orderId = "ORD-" + Math.floor(100000 + Math.random() * 900000);
     const orderDate = new Date().toLocaleString('en-US');
 
-    // Set up authentication
+    console.log("Authenticating with Google Sheets API");
     const serviceAccountAuth = new JWT({
       email: GOOGLE_SHEETS_CLIENT_EMAIL,
       key: GOOGLE_SHEETS_PRIVATE_KEY,
       scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-    })
+    });
 
-    // Initialize the sheet
-    const doc = new GoogleSpreadsheet(GOOGLE_SHEETS_SHEET_ID, serviceAccountAuth)
-    await doc.loadInfo()
+    console.log("Loading Google Sheet document");
+    const doc = new GoogleSpreadsheet(GOOGLE_SHEETS_SHEET_ID, serviceAccountAuth);
+    await doc.loadInfo();
+    console.log("Google Sheet loaded successfully");
 
-    // Get the first sheet
-    const sheet = doc.sheetsByIndex[0]
+    const sheet = doc.sheetsByIndex[0];
 
-    // Add headers if sheet is empty
     if (sheet.rowCount === 0) {
       await sheet.setHeaderRow([
         "orderId",
@@ -147,10 +145,10 @@ export async function submitOrderToGoogleSheet(orderData:any) {
         "shipping",
         "total",
         "status"
-      ])
+      ]);
+      console.log("Header row set successfully");
     }
 
-    // Add the row to the sheet
     await sheet.addRow({
       orderId,
       orderDate,
@@ -167,18 +165,19 @@ export async function submitOrderToGoogleSheet(orderData:any) {
       shipping,
       total,
       status: "New",
-    })
+    });
 
+    console.log("Order added to Google Sheet successfully");
     return {
       success: true,
       message: "Order placed successfully!",
       orderId,
-    }
+    };
   } catch (error) {
-    console.error("Error submitting order to Google Sheet:", error)
+    console.error("Error submitting order to Google Sheet:", error);
     return {
       success: false,
-      message: "Failed to place order. Please try again or contact customer support.",
-    }
+      message: `Failed to place order. Error: ${error.message}`,
+    };
   }
 }

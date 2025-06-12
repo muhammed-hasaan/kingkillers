@@ -36,29 +36,35 @@ export default function Home() {
                 <span className="font-bold">GUARANTEED RESULTS OR MONEY BACK!</span> Our powerful formula kills
                 cockroaches on contact and prevents them from coming back for 6 months!
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/product">
-                  <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/80 text-white font-bold">
+              <div className="flex flex-col sm:flex-row gap-4 w-full">
+                <Link href="/product" className="w-full sm:w-1/2 md:w-[160px]">
+                  <Button
+                    size="lg"
+                    className="w-full bg-primary hover:bg-primary/80 text-white font-bold"
+                  >
                     ORDER NOW
                   </Button>
                 </Link>
-                <Link href="/about">
+                <Link href="/about" className="w-full sm:w-1/2 md:w-[160px]">
                   <Button
                     variant="outline"
                     size="lg"
-                    className="w-full sm:w-auto bg-white/10 text-white border-white/20 hover:bg-white/20"
+                    className="w-full bg-white/10 text-white border-white/20 hover:bg-white/20"
                   >
                     Learn More
                   </Button>
                 </Link>
               </div>
-              <div className="flex items-center gap-2 bg-yellow-400 p-2 rounded-md w-[350px]">
+
+              <div className="flex items-center gap-2 bg-yellow-400 p-2 rounded-md w-full md:w-[340px]">
                 <Phone className="h-5 w-5" />
-                <span className="font-bold text-black">ORDER BY PHONE: <a href="tel:+923321144770">+92 332 1144770</a>
+                <span className="font-bold text-black">
+                  ORDER BY PHONE: <a href="tel:+923321144770">+92 332 1144770</a>
                 </span>
               </div>
+
             </div>
-           
+
           </div>
         </div>
       </section>
@@ -285,7 +291,8 @@ export default function Home() {
             <div className="space-y-2 text-center">
               <div className="relative aspect-video rounded-xl overflow-hidden border-4 border-green-600">
                 <Image
-                  src="https://www.lajaunies.com/wp-content/uploads/2024/04/dead-cockroach.webp"
+                  // src="https://www.lajaunies.com/wp-content/uploads/2024/04/dead-cockroach.webp"
+                  src="https://img.freepik.com/premium-photo/dead-cockroaches-wooden-table_36043-687.jpg?uid=R183942898&ga=GA1.1.1215317229.1736098905&semt=ais_hybrid&w=740"
                   alt="Clean kitchen after treatment"
                   fill
                   className="object-cover"
@@ -325,7 +332,7 @@ export default function Home() {
                 </p>
                 <div className="flex items-center space-x-2">
                   <div className="rounded-full bg-muted h-8 w-8">
-                  <Image width={100} height={100} alt="" src="/usermale.jpeg"/>
+                    <Image width={100} height={100} alt="" src="/usermale.jpeg" />
                   </div>
                   <div>
                     <p className="text-sm font-bold">Ahmed K.</p>
@@ -350,7 +357,7 @@ export default function Home() {
                 <div className="flex items-center space-x-2">
                   <div className="rounded-full bg-muted h-8 w-8">
 
-                  <Image width={80} height={80} alt="" src="/userfemale.jpeg"/>
+                    <Image width={80} height={80} alt="" src="/userfemale.jpeg" />
 
                   </div>
                   <div>
@@ -375,7 +382,7 @@ export default function Home() {
                 </p>
                 <div className="flex items-center space-x-2">
                   <div className="rounded-full bg-muted h-8 w-8">
-                  <Image width={80} height={80} alt="" src="/usermale.jpeg"/>
+                    <Image width={80} height={80} alt="" src="/usermale.jpeg" />
                   </div>
                   <div>
                     <p className="text-sm font-bold">Imran M.</p>

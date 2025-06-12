@@ -10,7 +10,7 @@ import { CheckCircle, Package, Clock, ArrowRight } from "lucide-react"
 export default function ConfirmationPage() {
   const searchParams = useSearchParams()
   const orderId = searchParams.get("orderId") || "ORD-" + Math.floor(100000 + Math.random() * 900000)
-
+  const localquan = localStorage.getItem("Quantity")
   // In a real app, you would fetch order details from a database or API
   const orderDetails = {
     orderNumber: orderId,
@@ -19,12 +19,12 @@ export default function ConfirmationPage() {
     items: [
       {
         name: "COCKROACH KILLER PRO FORMULA",
-        quantity: 1,
+        quantity: localquan,
         price: 499.0,
       },
     ],
     shipping: 50.0,
-    total: 549.0,
+    total: 499,
   }
 
   return (
@@ -68,13 +68,13 @@ export default function ConfirmationPage() {
                 {orderDetails.items.map((item, index) => (
                   <div key={index} className="flex items-center gap-4 p-4">
                     <div className="relative h-16 w-16 rounded-md overflow-hidden border">
-                      <Image src="/placeholder.svg?height=64&width=64" alt={item.name} fill className="object-cover" />
+                      <Image src="/cocrogeproduct.jfif" alt={item.name} fill className="object-cover" />
                     </div>
                     <div className="flex-1">
                       <h3 className="font-medium">{item.name}</h3>
-                      <p className="text-sm text-muted-foreground">Quantity: {item.quantity}</p>
+                      <p className="text-sm text-muted-foreground">Quantity: {localquan}</p>
                     </div>
-                    <div className="font-medium">₹{item.price.toFixed(2)}</div>
+                    <div className="font-medium">Rs{item.price.toFixed(2)}</div>
                   </div>
                 ))}
 
@@ -82,22 +82,23 @@ export default function ConfirmationPage() {
                   <div className="flex justify-between">
                     <span>Subtotal</span>
                     <span>
-                      ₹{orderDetails.items.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}
+                      Rs{orderDetails.items.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Shipping</span>
-                    <span>₹{orderDetails.shipping.toFixed(2)}</span>
+                    <span>Tax</span>
+                    <span>Rs0</span>
                   </div>
                   <div className="flex justify-between font-bold">
                     <span>Total</span>
-                    <span>₹{orderDetails.total.toFixed(2)}</span>
+                    <span> Rs{orderDetails.items.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="space-y-4">
+            {/* <div className="space-y-4">
               <h2 className="text-xl font-semibold">What's Next?</h2>
 
               <div className="grid gap-4 md:grid-cols-2">
@@ -120,9 +121,9 @@ export default function ConfirmationPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            {/* <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/" className="flex-1">
                 <Button variant="outline" className="w-full">
                   Continue Shopping
@@ -134,7 +135,7 @@ export default function ConfirmationPage() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-            </div>
+            </div> */}
           </CardContent>
         </Card>
       </div>

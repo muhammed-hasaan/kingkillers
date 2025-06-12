@@ -21,7 +21,7 @@ export default function Navbar() {
   return (
     <header className="w-full border-b bg-background">
       <div className="bg-primary py-1">
-        <div className="container flex justify-between items-center">
+        <div className="container flex justify-between items-center flex-col md:flex-row lg:w-[1000px]">
           <div className="text-white text-sm flex items-center">
             <Phone className="h-4 w-4 mr-2" />
             <span>Call Now: +92 332 1144770</span>
@@ -85,17 +85,7 @@ export default function Navbar() {
                 {route.label}
               </Link>
             ))}
-            <div className="flex items-center gap-4 pt-4">
-              <Link href="/cart" onClick={() => setIsMenuOpen(false)}>
-                <Button variant="outline" size="icon">
-                  <ShoppingCart className="h-4 w-4" />
-                  <span className="sr-only">Cart</span>
-                </Button>
-              </Link>
-              <Link href="/product" onClick={() => setIsMenuOpen(false)}>
-                <Button className="bg-primary hover:bg-primary/80 text-white font-bold">Buy Now</Button>
-              </Link>
-            </div>
+           
           </nav>
         </div>
       )}

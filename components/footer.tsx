@@ -1,18 +1,19 @@
 import Link from "next/link"
 import { Facebook, Instagram, Twitter } from "lucide-react"
-
+import Image from "next/image"
 export default function Footer() {
   return (
     <footer className="border-t bg-background">
       <div className="container py-8 md:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">CockroachKiller</h3>
-            <p className="text-sm text-muted-foreground">
-              Effective pest control solutions for a cleaner, healthier home.
-            </p>
+    
+        <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground space-y-10 lg:flex w-full lg:justify-between lg:items-center">
+              <div className="flex justify-center items-center text-left space-x-4">
+          <div className="space-y-4  flex justify-center items-center flex-col">
+            <h3 className="text-lg font-semibold rounded-full ">
+              <Image alt="logo" src="/cocrogelogo.jfif" width={100} height={100} style={{borderRadius:'100px'}} /></h3>
+           
           </div>
-          <div>
+          {/* <div>
             <h4 className="text-sm font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li>
@@ -31,8 +32,8 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
-          <div>
+          </div> */}
+          {/* <div>
             <h4 className="text-sm font-semibold mb-4">Support</h4>
             <ul className="space-y-2 text-sm">
               <li>
@@ -51,10 +52,10 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
           <div>
             <h4 className="text-sm font-semibold mb-4">Connect With Us</h4>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 w-full flex justify-start items-center">
               <Link href="#" className="text-muted-foreground hover:text-foreground">
                 <Facebook className="h-5 w-5" />
                 <span className="sr-only">Facebook</span>
@@ -74,7 +75,6 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} CockroachKiller. All rights reserved.</p>
         </div>
       </div>

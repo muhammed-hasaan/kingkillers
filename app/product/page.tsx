@@ -93,7 +93,7 @@ export default function ProductPage() {
             <div className="flex flex-col gap-4">
               <div className="space-y-2">
                 <Badge className="bg-yellow-400 text-black hover:bg-yellow-500 font-bold">BEST SELLER</Badge>
-                <h1 className="text-3xl font-bold text-primary">COCKROACH KILLER PRO FORMULA</h1>
+                <h1 className="text-3xl font-bold text-primary">KING KILLER COCKROACH PRO FORMULA</h1>
                 <div className="flex items-center gap-2">
                   <div className="flex items-center">
                     <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
@@ -136,8 +136,8 @@ export default function ProductPage() {
                   </div>
                 </div>
               </div>
-              <div className="space-y-4 pt-4">
-                <div className="flex flex-col space-y-2">
+              <div className=" pt-4 space-x-4  w-[100%]  ">
+                {/* <div className="flex flex-col space-y-2">
                   <label htmlFor="quantity" className="text-sm font-bold">
                     QUANTITY
                   </label>
@@ -152,12 +152,12 @@ export default function ProductPage() {
                     <option value="4">4 (Buy 2 Get 2 Free!)</option>
                     <option value="5">5</option>
                   </select>
-                </div>
-                <Button size="lg" className="w-full bg-primary hover:bg-primary/80 text-white font-bold text-lg">
+                </div> */}
+                <Button size="lg" className="  w-[48%] bg-primary hover:bg-primary/80 text-white font-bold ">
                   ADD TO CART
                 </Button>
                 <Link href="/checkout">
-                  <Button variant="outline" size="lg" className="w-full border-primary text-primary font-bold">
+                  <Button variant="outline" size="lg" className=" w-[48%]  border-primary text-primary font-bold">
                     BUY NOW
                   </Button>
                 </Link>
@@ -165,7 +165,7 @@ export default function ProductPage() {
               <div className="bg-yellow-50 p-4 rounded-md border-2 border-yellow-400">
                 <div className="flex items-center gap-2 font-bold">
                   <Phone className="h-5 w-5 text-primary" />
-                  <span>ORDER BY PHONE: +92 300 1234567</span>
+                  <span>ORDER BY PHONE: +92 332 1144770</span>
                 </div>
                 <div className="flex items-center gap-2 mt-2 font-bold">
                   <Truck className="h-5 w-5 text-primary" />
@@ -218,7 +218,7 @@ export default function ProductPage() {
                   <div className="grid md:grid-cols-2 gap-8 items-center">
                     <div className="space-y-4">
                       <p className="text-black font-medium">
-                        <span className="font-bold text-primary">COCKROACH KILLER PRO FORMULA</span> is a
+                        <span className="font-bold text-primary">KING KILLER COCKROACH PRO FORMULA</span> is a
                         professional-grade cockroach elimination solution designed for home use. Our unique formula
                         targets cockroaches at every stage of their lifecycle, from eggs to adults, ensuring complete
                         eradication of infestations.
@@ -237,7 +237,7 @@ export default function ProductPage() {
 
                     <div className="relative h-[300px] rounded-lg overflow-hidden border-4 border-primary">
                       <Image
-                        src="/placeholder.svg?height=300&width=400"
+                        src="/cocrogeproduct.jfif"
                         alt="Product demonstration"
                         fill
                         className="object-cover"
@@ -291,45 +291,47 @@ export default function ProductPage() {
                     <h4 className="text-xl font-bold text-primary">HOW TO USE</h4>
                   </div>
 
-                  <div className="grid md:grid-cols-4 gap-4">
-                    <div className="border-2 border-primary rounded-lg p-4 text-center space-y-2 bg-yellow-50">
-                      <div className="h-12 w-12 rounded-full bg-primary text-white flex items-center justify-center mx-auto font-bold text-xl">
-                        1
-                      </div>
-                      <h5 className="font-bold text-primary">SHAKE WELL</h5>
-                      <p className="text-sm text-black font-medium">Shake the bottle thoroughly before use.</p>
-                    </div>
+    <div className="grid md:grid-cols-4 gap-4">
+  <div className="border-2 border-primary rounded-lg p-4 text-center space-y-2 bg-yellow-50">
+    <div className="h-12 w-12 rounded-full bg-primary text-white flex items-center justify-center mx-auto font-bold text-xl">
+      1
+    </div>
+    <h5 className="font-bold text-primary">OPEN CAREFULLY</h5>
+    <p className="text-sm text-black font-medium">Open the bottle carefully and avoid spilling the medicine.</p>
+  </div>
 
-                    <div className="border-2 border-primary rounded-lg p-4 text-center space-y-2 bg-yellow-50">
-                      <div className="h-12 w-12 rounded-full bg-primary text-white flex items-center justify-center mx-auto font-bold text-xl">
-                        2
-                      </div>
-                      <h5 className="font-bold text-primary">DIRECT SPRAY</h5>
-                      <p className="text-sm text-black font-medium">
-                        Spray directly on cockroaches for immediate elimination.
-                      </p>
-                    </div>
+  <div className="border-2 border-primary rounded-lg p-4 text-center space-y-2 bg-yellow-50">
+    <div className="h-12 w-12 rounded-full bg-primary text-white flex items-center justify-center mx-auto font-bold text-xl">
+      2
+    </div>
+    <h5 className="font-bold text-primary">USE DIRECTLY</h5>
+    <p className="text-sm text-black font-medium">
+      Use the medicine directly where cockroaches are visible for quick results.
+    </p>
+  </div>
 
-                    <div className="border-2 border-primary rounded-lg p-4 text-center space-y-2 bg-yellow-50">
-                      <div className="h-12 w-12 rounded-full bg-primary text-white flex items-center justify-center mx-auto font-bold text-xl">
-                        3
-                      </div>
-                      <h5 className="font-bold text-primary">APPLY TO AREAS</h5>
-                      <p className="text-sm text-black font-medium">
-                        Spray in cracks, crevices, and areas where cockroaches hide.
-                      </p>
-                    </div>
+  <div className="border-2 border-primary rounded-lg p-4 text-center space-y-2 bg-yellow-50">
+    <div className="h-12 w-12 rounded-full bg-primary text-white flex items-center justify-center mx-auto font-bold text-xl">
+      3
+    </div>
+    <h5 className="font-bold text-primary">TARGET AREAS</h5>
+    <p className="text-sm text-black font-medium">
+      Apply the medicine in cracks, crevices, and other hiding places of cockroaches.
+    </p>
+  </div>
 
-                    <div className="border-2 border-primary rounded-lg p-4 text-center space-y-2 bg-yellow-50">
-                      <div className="h-12 w-12 rounded-full bg-primary text-white flex items-center justify-center mx-auto font-bold text-xl">
-                        4
-                      </div>
-                      <h5 className="font-bold text-primary">REAPPLY</h5>
-                      <p className="text-sm text-black font-medium">
-                        Reapply every 6 months for continuous protection.
-                      </p>
-                    </div>
-                  </div>
+  <div className="border-2 border-primary rounded-lg p-4 text-center space-y-2 bg-yellow-50">
+    <div className="h-12 w-12 rounded-full bg-primary text-white flex items-center justify-center mx-auto font-bold text-xl">
+      4
+    </div>
+    <h5 className="font-bold text-primary">REAPPLY</h5>
+    <p className="text-sm text-black font-medium">
+      Reapply every 6 months for continuous protection.
+    </p>
+  </div>
+</div>
+
+
                 </div>
 
                 <div className="bg-yellow-50 border-2 border-yellow-400 rounded-lg p-6">
@@ -652,7 +654,7 @@ export default function ProductPage() {
                   <div className="border-2 border-primary rounded-lg p-6 bg-yellow-50">
                     <div className="flex items-start gap-4">
                       <div className="relative h-12 w-12 rounded-full overflow-hidden bg-muted">
-                        <Image src="/placeholder.svg?height=48&width=48" alt="Ahmed K." fill className="object-cover" />
+                        <Image src="https://th.bing.com/th/id/OIP.L-KjmB5ffQvkzl82dSMZxQHaHa?w=194&h=194&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Ahmed K." fill className="object-cover" />
                       </div>
                       <div className="flex-1 space-y-2">
                         <div className="flex items-center justify-between">
@@ -675,30 +677,10 @@ export default function ProductPage() {
                           I've been disappointed by so many products before, but this one truly delivered results.
                           Highly recommended!"
                         </p>
-                        <div className="pt-2 flex gap-2">
-                          <div className="relative h-16 w-16 rounded-md overflow-hidden border-2 border-primary">
-                            <Image
-                              src="/placeholder.svg?height=64&width=64"
-                              alt="Customer photo"
-                              fill
-                              className="object-cover"
-                            />
-                          </div>
-                          <div className="relative h-16 w-16 rounded-md overflow-hidden border-2 border-primary">
-                            <Image
-                              src="/placeholder.svg?height=64&width=64"
-                              alt="Customer photo"
-                              fill
-                              className="object-cover"
-                            />
-                          </div>
-                        </div>
+             
                         <div className="pt-2 flex items-center gap-4 text-sm">
                           <span className="font-medium">2 months ago</span>
-                          <button className="flex items-center gap-1 text-primary hover:underline font-bold">
-                            <ThumbsUp className="h-4 w-4" />
-                            Helpful (24)
-                          </button>
+                         
                         </div>
                       </div>
                     </div>
@@ -708,7 +690,7 @@ export default function ProductPage() {
                     <div className="flex items-start gap-4">
                       <div className="relative h-12 w-12 rounded-full overflow-hidden bg-muted">
                         <Image
-                          src="/placeholder.svg?height=48&width=48"
+                          src="https://th.bing.com/th/id/OIP.116m9cn-FSVzkfa2up8S3gAAAA?w=198&h=197&c=7&r=0&o=5&dpr=1.3&pid=1.7"
                           alt="Fatima S."
                           fill
                           className="object-cover"
@@ -737,10 +719,7 @@ export default function ProductPage() {
                         </p>
                         <div className="pt-2 flex items-center gap-4 text-sm">
                           <span className="font-medium">3 months ago</span>
-                          <button className="flex items-center gap-1 text-primary hover:underline font-bold">
-                            <ThumbsUp className="h-4 w-4" />
-                            Helpful (18)
-                          </button>
+                        
                         </div>
                       </div>
                     </div>
@@ -749,7 +728,7 @@ export default function ProductPage() {
                   <div className="border-2 border-primary rounded-lg p-6">
                     <div className="flex items-start gap-4">
                       <div className="relative h-12 w-12 rounded-full overflow-hidden bg-muted">
-                        <Image src="/placeholder.svg?height=48&width=48" alt="Imran M." fill className="object-cover" />
+                        <Image src="https://th.bing.com/th/id/OIP.L-KjmB5ffQvkzl82dSMZxQHaHa?w=194&h=194&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Imran M." fill className="object-cover" />
                       </div>
                       <div className="flex-1 space-y-2">
                         <div className="flex items-center justify-between">
@@ -774,19 +753,13 @@ export default function ProductPage() {
                         </p>
                         <div className="pt-2 flex items-center gap-4 text-sm">
                           <span className="font-medium">1 month ago</span>
-                          <button className="flex items-center gap-1 text-primary hover:underline font-bold">
-                            <ThumbsUp className="h-4 w-4" />
-                            Helpful (12)
-                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex justify-center">
-                  <Button className="bg-primary hover:bg-primary/80 text-white font-bold">LOAD MORE REVIEWS</Button>
-                </div>
+              
               </div>
             </TabsContent>
           </Tabs>
@@ -794,7 +767,7 @@ export default function ProductPage() {
       </section>
 
       {/* Order Now Section */}
-      <section className="w-full py-8 md:py-12 bg-yellow-400">
+      {/* <section className="w-full py-8 md:py-12 bg-yellow-400">
         <div className="container px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-6 items-center">
             <div className="relative h-[300px] rounded-xl overflow-hidden border-4 border-primary">
@@ -804,7 +777,6 @@ export default function ProductPage() {
                 fill
                 className="object-cover"
               />
-              {/* Image description: Professional photo of the product package showing the brand name and cockroach imagery */}
             </div>
             <div className="flex flex-col items-center md:items-start justify-center space-y-4 text-center md:text-left">
               <div className="space-y-2">
@@ -833,10 +805,10 @@ export default function ProductPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Related Products */}
-      <section className="w-full py-8 md:py-12 bg-white">
+      {/* <section className="w-full py-8 md:py-12 bg-white">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
@@ -903,7 +875,7 @@ export default function ProductPage() {
             </Card>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }
